@@ -10,7 +10,7 @@ from brownie import (
 )
 
 FORKED_LOCAL_ENVIRONMENTS = ["mainnet-fork", "mainnet-fork-dev"]
-LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["development", "ganache-local"]
+LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["hardhat", "development", "ganache-local", "ganache"]
 
 
 def get_account(index=None, id=None):
@@ -20,7 +20,7 @@ def get_account(index=None, id=None):
     if index:
         return accounts[index]
     elif id:
-        return account.load(id)
+        return accounts.load(id)
     elif (
         network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS
         or network.show_active() in FORKED_LOCAL_ENVIRONMENTS
